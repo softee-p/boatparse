@@ -4,8 +4,8 @@ import scrapy
 class BoatsSpider(scrapy.Spider):
     name = 'boats'
     page_num = 48
-    allowed_domains = ['boat24.com']
-    start_urls = ['https://www.boat24.com/en/sailboats/?page=48&sort=chfasc']
+    allowed_domains = ['24.com']
+    start_urls = ['com/en/sailboats/?page=48&sort=chfasc']
 
     def parse(self, response):
 
@@ -16,7 +16,7 @@ class BoatsSpider(scrapy.Spider):
 
             yield scrapy.Request(boat_url, callback=self.parse_boats)
 
-        next_page_url = 'https://www.boat24.com/en/sailboats/?page=' + str(BoatsSpider.page_num) + '&sort=chfasc'
+        next_page_url = '/en/sailboats/?page=' + str(BoatsSpider.page_num) + '&sort=chfasc'
 
         if BoatsSpider.page_num <= 5672:
             BoatsSpider.page_num += 48
